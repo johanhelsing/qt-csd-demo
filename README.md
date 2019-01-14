@@ -1,6 +1,9 @@
 # Qt client side window decorations demo
 
-Depends on Qt 5.13 branch, and these patches:
+Project to test WIP API for
+[QTBUG-73011](https://bugreports.qt.io/browse/QTBUG-73011).
+
+Currently it depends on Qt 5.13 branch, and these patches:
 
 - https://codereview.qt-project.org/219277
 - https://codereview.qt-project.org/249758
