@@ -85,18 +85,10 @@ Window {
                                 implicitWidth: 150
                                 text: modelData
                                 padding: 0
-                                //background: Rectangle {
-                                //    implicitWidth: 10
-                                //    implicitHeight: 20
-                                //    opacity: enabled ? 1 : 0.3
-                                //    color: tab.checked ? "red" : "green"
-                                //    //border.width: 1
-                                //    //radius: width
-                                //}
                                 contentItem: Item {
                                     implicitWidth: 120
                                     implicitHeight: 20
-                                    clip: true // TODO: get rid of this
+                                    clip: true
                                     Label { 
                                         id: tabIcon
                                         text: "↻" 
@@ -113,7 +105,6 @@ Window {
                                         text: tab.text
                                         font: tab.font
                                         opacity: enabled ? 1.0 : 0.3
-                                        //color: tab.down ? "#17a81a" : "#21be2b"
                                         horizontalAlignment: Text.AlignHCenter
                                         verticalAlignment: Text.AlignVCenter
                                         elide: Text.ElideRight
@@ -138,12 +129,9 @@ Window {
                                         visible: tab.checked
                                         text: "🗙"
                                         contentItem: Text {
-                                            //width: 40
-                                            //height: 40
                                             text: closeButton.text
                                             font: closeButton.font
                                             opacity: enabled ? 1.0 : 0.3
-                                            //color: closeButton.down ? "#17a81a" : "#21be2b"
                                             color: "black"
                                             horizontalAlignment: Text.AlignHCenter
                                             verticalAlignment: Text.AlignVCenter
@@ -153,9 +141,7 @@ Window {
                                             implicitWidth: 10
                                             implicitHeight: 10
                                             opacity: enabled ? 1 : 0.3
-                                            color: tab.background.color // TODO: different color on click
-                                            //border.width: 1
-                                            //radius: width
+                                            color: tab.background.color
                                         }
                                     }
                                 }
@@ -183,7 +169,6 @@ Window {
             }
         }
 
-        // TODO: wrap in stacklayout?
         Page {
             anchors.fill: parent
             header: ToolBar {
