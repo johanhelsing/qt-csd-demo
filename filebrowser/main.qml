@@ -39,8 +39,7 @@ Window {
 
     Page {
         anchors.fill: parent
-        anchors.margins: window.visibility === Window.Windowed ? 5 : 0 // TODO: this messes up the window geometry
-        //    footer: ToolBar {
+        anchors.margins: window.visibility === Window.Windowed ? 5 : 0
         header: ToolBar {
             contentHeight: toolButton.implicitHeight
             Item {
@@ -62,9 +61,11 @@ Window {
                         font.pixelSize: Qt.application.font.pixelSize * 1.6
                         onClicked: drawer.open()
                     }
-                    Button { text: "home" }
-                    Button { text: "johan" }
-                    Button { text: "dev" }
+                    ToolButton { text: "home" }
+                    Label { text: "/" }
+                    ToolButton { text: "johan" }
+                    Label { text: "/" }
+                    ToolButton { text: "dev" }
                 }
 
                 RowLayout {
@@ -75,25 +76,20 @@ Window {
                         placeholderText: "search"
                     }
                     ToolButton {
-                        text: "_"
+                        text: "🗕"
                         font.pixelSize: Qt.application.font.pixelSize * 1.6
                         onClicked: window.showMinimized();
                     }
                     ToolButton {
-                        text: "#"
+                        text: window.visibility == Window.Maximized ? "🗗" : "🗖"
                         font.pixelSize: Qt.application.font.pixelSize * 1.6
                         onClicked: window.toggleMaximized()
                     }
                     ToolButton {
-                        text: "x"
+                        text: "🗙"
                         font.pixelSize: Qt.application.font.pixelSize * 1.6
                         onClicked: window.close()
                     }
-                }
-
-                Label {
-                    text: "Home"
-                    anchors.centerIn: parent
                 }
             }
         }
