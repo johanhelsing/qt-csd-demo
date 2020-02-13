@@ -11,6 +11,14 @@ For Wayland support these additional patches are needed:
 
 Hopefully, they be merged soon and also part of Qt 5.15.
 
-The demo application looks like this:
+There are two demo applications in this project.
+
+The `filebrowser` demo should look something like this:
 
 ![screenshot](https://i.imgur.com/avidazd.png)
+
+The other demo `webbrowser.qml` is just a single file, and can just be run with
+
+```sh
+$ qml webbrowser.qml
+```
