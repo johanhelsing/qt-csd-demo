@@ -12,6 +12,7 @@ Window {
     height: 480
     title: qsTr("Stack")
     color: "#99000000"
+    property int bw: 5
 
     function toggleMaximized() {
         if (window.visibility === Window.Maximized) {
@@ -21,6 +22,22 @@ Window {
         }
     }
 
+    // The mouse area is just for setting the right cursor shape
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: {
+            const p = Qt.point(mouseX, mouseY);
+            if (p.x < bw && p.y < bw) return Qt.SizeFDiagCursor;
+            if (p.x >= width - bw && p.y >= height - bw) return Qt.SizeFDiagCursor;
+            if (p.x >= width - bw && p.y < bw) return Qt.SizeBDiagCursor;
+            if (p.x < bw && p.y >= height - bw) return Qt.SizeBDiagCursor;
+            if (p.x < bw || p.x >= width - bw) return Qt.SizeHorCursor;
+            if (p.y < bw || p.x >= height - bw) return Qt.SizeVerCursor;
+        }
+        acceptedButtons: Qt.NoButton // don't handle actual events
+    }
+
     DragHandler {
         id: resizeHandler
         grabPermissions: TapHandler.TakeOverForbidden
@@ -28,17 +45,17 @@ Window {
         onActiveChanged: if (active) {
             const p = resizeHandler.centroid.position;
             let e = 0;
-            if (p.x / width < 0.10) { e |= Qt.LeftEdge }
-            if (p.x / width > 0.90) { e |= Qt.RightEdge }
-            if (p.y / height < 0.10) { e |= Qt.TopEdge }
-            if (p.y / height > 0.90) { e |= Qt.BottomEdge }
+            if (p.x < bw) { e |= Qt.LeftEdge }
+            if (p.x >= width - bw) { e |= Qt.RightEdge }
+            if (p.y < bw) { e |= Qt.TopEdge }
+            if (p.y >= height - bw) { e |= Qt.BottomEdge }
             window.startSystemResize(e);
         }
     }
 
     Page {
         anchors.fill: parent
-        anchors.margins: window.visibility === Window.Windowed ? 5 : 0 // TODO: this messes up the window geometry
+        anchors.margins: window.visibility === Window.Windowed ? bw : 0
         //    footer: ToolBar {
         header: ToolBar {
             contentHeight: toolButton.implicitHeight
