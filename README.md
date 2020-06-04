@@ -4,7 +4,7 @@ Project to test the API for cross-platform client side window decorations in Qt 
 
 See the [blog post](https://www.qt.io/blog/custom-window-decorations) I wrote for details.
 
-It should work on X11, Windows and macOS (macOS has no resize support though).
+It should work on X11, Wayland, Windows and macOS (macOS has no resize support though).
 
 There are two demo applications in this project.
 
