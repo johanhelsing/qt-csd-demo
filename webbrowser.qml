@@ -34,7 +34,7 @@ Window {
             if (p.x >= width - b && p.y < b) return Qt.SizeBDiagCursor;
             if (p.x < b && p.y >= height - b) return Qt.SizeBDiagCursor;
             if (p.x < b || p.x >= width - b) return Qt.SizeHorCursor;
-            if (p.y < b || p.x >= height - b) return Qt.SizeVerCursor;
+            if (p.y < b || p.y >= height - b) return Qt.SizeVerCursor;
         }
         acceptedButtons: Qt.NoButton // don't handle actual events
     }
